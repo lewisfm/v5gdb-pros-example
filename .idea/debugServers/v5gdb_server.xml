@@ -1,0 +1,14 @@
+<component name="DebugServers">
+  <generic-debug-target name="v5gdb server" uniqueID="ad3ce38f-43fc-47ee-8913-e0f2e181aab4" selected="true">
+    <debugger version="1">
+      <debugger kind="GDB" isBundled="true" />
+      <env />
+    </debugger>
+    <gdbserver exe="v5gdb" args="--tcp localhost:35537">
+      <env />
+    </gdbserver>
+    <console port="4444" />
+    <target download-type="NONE" reset-before="false" reset-after="false" />
+    <connection extended-remote="false" use-custom-script="true" custom-script="set debug remote 1&#10;echo Connecting to target...\n&#10;target remote :35537&#10;echo Connected to target!\n" warmup-ms="500" />
+  </generic-debug-target>
+</component>
