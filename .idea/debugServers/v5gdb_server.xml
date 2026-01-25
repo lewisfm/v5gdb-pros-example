@@ -9,6 +9,6 @@
     </gdbserver>
     <console port="4444" />
     <target download-type="NONE" reset-before="false" reset-after="false" />
-    <connection extended-remote="false" use-custom-script="true" custom-script="set debug remote 1&#10;echo Connecting to target...\n&#10;target remote :35537&#10;echo Connected to target!\n" warmup-ms="500" />
+    <connection extended-remote="false" use-custom-script="true" remote-string=":35537" custom-script="set debug remote 1&#10;echo Connecting to target...\n&#10;target remote :35537&#10;echo Connected to target!\n" warmup-ms="1000" />
   </generic-debug-target>
 </component>
