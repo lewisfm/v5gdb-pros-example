@@ -22,7 +22,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7f863ae-d430-48e1-96de-e3ba2976fa2a" name="Changes" comment="init" />
+    <list default="true" id="c7f863ae-d430-48e1-96de-e3ba2976fa2a" name="Changes" comment="Enable FreeRTOS integration">
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/v5-common.ld" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/v5-common.ld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/v5.ld" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/v5.ld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -165,7 +170,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Custom Build Application.PROS.executor": "Debug",
+    "Custom Build Application.PROS.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Remote Debug.v5gdb.executor": "Debug",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
@@ -208,7 +213,7 @@
       <workItem from="1769295403652" duration="350000" />
       <workItem from="1769295762281" duration="15000" />
       <workItem from="1769295778505" duration="65000" />
-      <workItem from="1769295844976" duration="3566000" />
+      <workItem from="1769295844976" duration="4777000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -218,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769298704127</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Enable FreeRTOS integration">
+      <option name="closed" value="true" />
+      <created>1769299477662</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1769299477662</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,18 +239,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/main.cpp</url>
-          <line>37</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Enable FreeRTOS integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enable FreeRTOS integration" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

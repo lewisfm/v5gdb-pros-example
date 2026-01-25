@@ -31,3 +31,13 @@ MEMORY
 REGION_ALIAS("RAM", COLD_MEMORY);
 
 ENTRY(vexStartup)
+
+SECTIONS {
+    .stack (NOLOAD) : {
+       . = ALIGN(16);
+       __stack_start = .;
+       . = ORIGIN(HEAP); /* Use space between bss and HEAP memory section as stack */
+       __stack = .;
+       __stack_end = .;
+    } > RAM
+} INSERT AFTER .bss;

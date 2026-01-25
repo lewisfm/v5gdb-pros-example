@@ -33,7 +33,6 @@ void initialize() {
 	v5gdb::breakpoint();
 	v5gdb::breakpoint();
 
-
 	auto n = fib(40);
 	printf("Fib %llu\n", n);
 }
