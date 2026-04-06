@@ -5,19 +5,20 @@
 #include "pros/rtos.hpp"
 #include "v5gdb.h"
 
+[[gnu::noinline]]
 int fib(uint64_t n) {
-	uint64_t a = 0;
-	uint64_t b = 0;
-	uint64_t count = 0;
+	__asm__ __volatile__("" ::: "memory");
 
-	while (count < n) {
+	uint64_t a = 0;
+	uint64_t b = 1;
+
+	for (uint64_t i = 0; i < n; i++) {
 		uint64_t tmp = a + b;
-		b = a;
-		a = tmp;
-		count += 1;
+		a = b;
+		b = tmp;
 	}
 
-	return b;
+	return a;
 }
 
 v5gdb::StdioTransport transport;
@@ -37,8 +38,11 @@ void initialize() {
 	printf("Okay, starting loop\n");
 
 	while (true) {
+		v5gdb::breakpoint();
+
+		int number = fib(3);
+		printf("Number: %d!\n", number);
 		pros::delay(1000);
-		printf("Looped!\n");
 	}
 }
 
