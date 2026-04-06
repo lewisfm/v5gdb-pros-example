@@ -1,40 +1,45 @@
 #include "main.h"
 #include <cstdint>
 #include <cstdio>
+#include <stdint.h>
 #include "pros/rtos.hpp"
 #include "v5gdb.h"
 
-uint64_t fib(uint64_t n) {
-    uint64_t a = 1;
-    uint64_t b = 0;
-    uint64_t count = 0;
+int fib(uint64_t n) {
+	uint64_t a = 0;
+	uint64_t b = 0;
+	uint64_t count = 0;
 
-    while (count < n) {
-        uint64_t tmp = a + b;
-        b = a;
-        a = tmp;
-        count += 1;
-    }
+	while (count < n) {
+		uint64_t tmp = a + b;
+		b = a;
+		a = tmp;
+		count += 1;
+	}
 
-    return b;
+	return b;
 }
 
-/**
- * Runs initialization code. This occurs as soon as the program is started.
- *
- * All other competition modes are blocked by initialize; it is recommended
- * to keep execution time for this mode under a few seconds.
- */
+v5gdb::StdioTransport transport;
 void initialize() {
-	printf("Hello, world\n");
-	pros::delay(50);
+	printf("Installing v5gdb\n");
 
-	v5gdb::install(v5gdb::StdioTransport());
-	v5gdb::breakpoint();
+	pros::delay(100);
+	v5gdb::install(transport);
+
+	pros::delay(100);
+
+	printf("Done\n");
+
 	v5gdb::breakpoint();
 
-	auto n = fib(40);
-	printf("Fib %llu\n", n);
+	pros::delay(100);
+	printf("Okay, starting loop\n");
+
+	while (true) {
+		pros::delay(1000);
+		printf("Looped!\n");
+	}
 }
 
 /**
@@ -82,21 +87,21 @@ void autonomous() {}
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	pros::MotorGroup left_mg({1, -2, 3});    // Creates a motor group with forwards ports 1 & 3 and reversed port 2
-	pros::MotorGroup right_mg({-4, 5, -6});  // Creates a motor group with forwards port 5 and reversed ports 4 & 6
+	// pros::Controller master(pros::E_CONTROLLER_MASTER);
+	// pros::MotorGroup left_mg({1, -2, 3});    // Creates a motor group with forwards ports 1 & 3 and reversed port 2
+	// pros::MotorGroup right_mg({-4, 5, -6});  // Creates a motor group with forwards port 5 and reversed ports 4 & 6
 
 
-	while (true) {
-		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
-		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
-		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);  // Prints status of the emulated screen LCDs
+	// while (true) {
+	// 	pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
+	// 	                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
+	// 	                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);  // Prints status of the emulated screen LCDs
 
-		// Arcade control scheme
-		int dir = master.get_analog(ANALOG_LEFT_Y);    // Gets amount forward/backward from left joystick
-		int turn = master.get_analog(ANALOG_RIGHT_X);  // Gets the turn left/right from right joystick
-		left_mg.move(dir - turn);                      // Sets left motor voltage
-		right_mg.move(dir + turn);                     // Sets right motor voltage
-		pros::delay(20);                               // Run for 20 ms then update
-	}
+	// 	// Arcade control scheme
+	// 	int dir = master.get_analog(ANALOG_LEFT_Y);    // Gets amount forward/backward from left joystick
+	// 	int turn = master.get_analog(ANALOG_RIGHT_X);  // Gets the turn left/right from right joystick
+	// 	left_mg.move(dir - turn);                      // Sets left motor voltage
+	// 	right_mg.move(dir + turn);                     // Sets right motor voltage
+	// 	pros::delay(20);                               // Run for 20 ms then update
+	// }
 }
